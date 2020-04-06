@@ -29,5 +29,5 @@ async def on_message(message):
 @client.event
 async def on_member_join(member):
     embed = discord.Embed(title="WELCOME", color=0x00ff00)
-    embed.add_field(name="Welcome", value=f"{member} Seja bem vindo(a) Coffe Br.", inline=False) 
+    embed.add_field(name="Welcome", value=f"{member} Seja bem vindo(a).", inline=False) 
     await client.get_channel(691716926329847940).send(embed=embed)
