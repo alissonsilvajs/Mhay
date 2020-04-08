@@ -1,6 +1,7 @@
 # coding=utf-8
 import discord
 from discord.utils import get
+import datetime
 import random
 
 client = discord.Client()
@@ -11,8 +12,15 @@ msg_user = None
 
 @client.event
 async def on_ready():
-    print(-==-=-=-=-=-=-=
-    print("Bot habi")
+
+    now = datetime.datetime.now()
+    print("░█████╗░░█████╗░███████╗███████╗███████╗██╗░░░░░░█████╗░██████╗░░██████╗\n██╔══██╗██╔══██╗██╔════╝██╔════╝██╔════╝██║░░░░░██╔══██╗██╔══██╗██╔════╝\n██║░░╚═╝██║░░██║█████╗░░█████╗░░█████╗░░██║░░░░░███████║██████╦╝╚█████╗░\n██║░░██╗██║░░██║██╔══╝░░██╔══╝░░██╔══╝░░██║░░░░░██╔══██║██╔══██╗░╚═══██╗\n╚█████╔╝╚█████╔╝██║░░░░░██║░░░░░███████╗███████╗██║░░██║██████╦╝██████╔╝\n░╚════╝░░╚════╝░╚═╝░░░░░╚═╝░░░░░╚══════╝╚══════╝╚═╝░░╚═╝╚═════╝░╚═════╝░")
+    print("")
+    print("© CoffeeLabs 2020 - ", now.year)
+    print("")
+    print("Criado por @freazesss e melhorado por @alissonsilvajs")
+    print("")
+    print("Bot inicializado com sucesso!")
 
 @client.event
 async def on_message(message):
@@ -29,7 +37,51 @@ async def on_message(message):
                         inline=False)
         await message.channel.send(embed=embed)
 
+    if message.content.lower().startswith(">cargos"):
+
+        embed = discord.Embed(
+            title="Coffeebot - CoffeeLabs",
+            color=COR,
+            description = "█▀▀ █▀█ █▀▀ █▀▀ █▀▀ █▀▀ █▄▄ █▀█ ▀█▀\n█▄▄ █▄█ █▀░ █▀░ ██▄ ██▄ █▄█ █▄█ ░█░\n \n**CoffeeLabs - © 2020**",
+        )
+
+        embed = discord.Embed(
+            title="Selecione a sua preferência de linguagem",
+            color=COR,
+            description="- Front-end  =  💻 \n"
+                        "- Back-end  =  🔌 \n"
+                        "- Python  =  🐍 \n"
+                        "- PHP  =  💎 \n"
+                        "- Ruby  =  🐘 \n"
+                        "- Java  =  ☕ ",
+        )
+
+        await message.channel.send(embed=embed)
+        botmsg = await message.channel.send(embed=embed1)
+
+        await botmsg.add_reaction("💻")
+        await botmsg.add_reaction("🔌")
+        await botmsg.add_reaction("🐍")
+        await botmsg.add_reaction("💎")
+        await botmsg.add_reaction("🐘")
+        await botmsg.add_reaction("☕")
+
+        global msg_id
+        msg_id = botmsg.id
+
+        global msg_user
+        msg_user = message.author
+
+
     if message.content.lower().startswith(">verificar"):
+
+        embed = discord.Embed(
+            title="Coffeebot - CoffeeLabs",
+            color=COR,
+            description="█▀▀ █▀█ █▀▀ █▀▀ █▀▀ █▀▀ █▄▄ █▀█ ▀█▀\n█▄▄ █▄█ █▀░ █▀░ ██▄ ██▄ █▄█ █▄█ ░█░\n \n**CoffeeLabs - © 2020**",
+        )
+
+        await message.channel.send(embed=embed)
 
         embed1 = discord.Embed(
             title="Leia antes de aceitar!",
@@ -71,6 +123,7 @@ async def on_message(message):
 async def on_reaction_add(reaction, user):
     msg = reaction.message
 
+    # Verificação
     if reaction.emoji == "✅" and msg.id == msg_id: #and user == msg_user:
         this_role = get(msg.guild.roles, id=int(697127171931635752))
         await user.add_roles(this_role)
@@ -80,10 +133,55 @@ async def on_reaction_add(reaction, user):
 
         print("Usuário verificado: ", user)
 
+    # Front-end
+    if reaction.emoji == "💻" and msg.id == msg_id:
+        this_role = get(msg.guild.roles, id=int(696682138162036738))
+        await user.add_roles(this_role)
+
+        print("Cargo adicionado - Front-end: ", user)
+
+    # Back-end
+    if reaction.emoji == "🔌" and msg.id == msg_id:
+        this_role = get(msg.guild.roles, id=int(696682158181318706))
+        await
+        user.add_roles(this_role)
+
+        print("Cargo adicionado - Front-end: ", user)
+
+    # PHP
+    if reaction.emoji == "🐘" and msg.id == msg_id:
+        this_role = get(msg.guild.roles, id=int(696682433516535841))
+        await user.add_roles(this_role)
+
+        print("Cargo adicionado - PHP: ", user)
+
+    # Java
+    if reaction.emoji == "☕" and msg.id == msg_id:
+        this_role = get(msg.guild.roles, id=int(696682461404594206))
+        await user.add_roles(this_role)
+
+        print("Cargo adicionado - Java: ", user)
+
+    # Python
+    if reaction.emoji == "🐍" and msg.id == msg_id:
+        this_role = get(msg.guild.roles, id=int(696682433516535841))
+        await user.add_roles(this_role)
+
+        print("Cargo adicionado - Python: ", user)
+
+    # Ruby
+    if reaction.emoji == "💎" and msg.id == msg_id:
+        this_role = get(msg.guild.roles, id=int(697235035639513138))
+        await user.add_roles(this_role)
+
+        print("Cargo adicionado - Ruby: ", user)
+
+
 @client.event
 async def on_reaction_remove(reaction, user):
     msg = reaction.message
 
+    # Verificação
     if reaction.emoji == "✅" and msg.id == msg_id: #and user == msg_user:
         this_role = get(msg.guild.roles, id=int(697127171931635752))
         await user.remove_roles(this_role)
@@ -93,8 +191,57 @@ async def on_reaction_remove(reaction, user):
 
         print("Usuário des-verificado: ", user)
 
+    # Front-end
+    if reaction.emoji == "💻" and msg.id == msg_id:
+        this_role = get(msg.guild.roles, id=int(696682138162036738))
+        await
+        user.remove_roles(this_role)
+
+        print("Cargo removido - Front-end: ", user)
+
+    # Back-end
+    if reaction.emoji == "🔌" and msg.id == msg_id:
+        this_role = get(msg.guild.roles, id=int(696682158181318706))
+        await
+        user.remove_roles(this_role)
+
+        print("Cargo removido - Front-end: ", user)
+
+    # PHP
+    if reaction.emoji == "🐘" and msg.id == msg_id:
+        this_role = get(msg.guild.roles, id=int(696682433516535841))
+        await
+        user.remove_roles(this_role)
+
+        print("Cargo removido - PHP: ", user)
+
+    # Java
+    if reaction.emoji == "☕" and msg.id == msg_id:
+        this_role = get(msg.guild.roles, id=int(696682461404594206))
+        await
+        user.remove_roles(this_role)
+
+        print("Cargo removido - Java: ", user)
+
+    # Python
+    if reaction.emoji == "🐍" and msg.id == msg_id:
+        this_role = get(msg.guild.roles, id=int(696682433516535841))
+        await
+        user.remove_roles(this_role)
+
+        print("Cargo removido - Python: ", user)
+
+    # Ruby
+    if reaction.emoji == "💎" and msg.id == msg_id:
+        this_role = get(msg.guild.roles, id=int(697235035639513138))
+        await
+        user.remove_roles(this_role)
+
+        print("Cargo removido - Ruby: ", user)
+
+
 @client.event
 async def on_member_join(member):
-    embed = discord.Embed(title="CoffeeBot - Mensagem de Boas-vindas", color=0x00ff00)
+    embed = discord.Embed(title="Coffeebot - Mensagem de Boas-vindas", color=0x00ff00)
     embed.add_field(name="Seja bem-vindo(a)", value=f"{member} obrigado por entrar! Mas antes de mais nada, você é um usuário não verificado e deverá verificar no `verificar-conta` \n Atenciosamente,\n CoffeeLabs.", inline=False)
     await client.get_channel(696799654993592363).send(embed=embed)
