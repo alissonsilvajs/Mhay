@@ -45,7 +45,7 @@ async def on_message(message):
             description = "█▀▀ █▀█ █▀▀ █▀▀ █▀▀ █▀▀ █▄▄ █▀█ ▀█▀\n█▄▄ █▄█ █▀░ █▀░ ██▄ ██▄ █▄█ █▄█ ░█░\n \n**CoffeeLabs - © 2020**",
         )
 
-        embed = discord.Embed(
+        embed1 = discord.Embed(
             title="Selecione a sua preferência de linguagem",
             color=COR,
             description="- Front-end  =  💻 \n"
@@ -66,11 +66,11 @@ async def on_message(message):
         await botmsg.add_reaction("🐘")
         await botmsg.add_reaction("☕")
 
-        global msg_id
-        msg_id = botmsg.id
+        global msg_id1
+        msg_id1 = botmsg.id
 
-        global msg_user
-        msg_user = message.author
+        global msg_user1
+        msg_user1 = message.author
 
 
     if message.content.lower().startswith(">verificar"):
@@ -134,43 +134,42 @@ async def on_reaction_add(reaction, user):
         print("Usuário verificado: ", user)
 
     # Front-end
-    if reaction.emoji == "💻" and msg.id == msg_id:
+    if reaction.emoji == "💻" and msg.id == msg_id1:
         this_role = get(msg.guild.roles, id=int(696682138162036738))
         await user.add_roles(this_role)
 
         print("Cargo adicionado - Front-end: ", user)
 
     # Back-end
-    if reaction.emoji == "🔌" and msg.id == msg_id:
+    if reaction.emoji == "🔌" and msg.id == msg_id1:
         this_role = get(msg.guild.roles, id=int(696682158181318706))
-        await
-        user.add_roles(this_role)
+        await user.add_roles(this_role)
 
         print("Cargo adicionado - Front-end: ", user)
 
     # PHP
-    if reaction.emoji == "🐘" and msg.id == msg_id:
-        this_role = get(msg.guild.roles, id=int(696682433516535841))
+    if reaction.emoji == "🐘" and msg.id == msg_id1:
+        this_role = get(msg.guild.roles, id=int(696682804510982184))
         await user.add_roles(this_role)
 
         print("Cargo adicionado - PHP: ", user)
 
     # Java
-    if reaction.emoji == "☕" and msg.id == msg_id:
+    if reaction.emoji == "☕" and msg.id == msg_id1:
         this_role = get(msg.guild.roles, id=int(696682461404594206))
         await user.add_roles(this_role)
 
         print("Cargo adicionado - Java: ", user)
 
     # Python
-    if reaction.emoji == "🐍" and msg.id == msg_id:
+    if reaction.emoji == "🐍" and msg.id == msg_id1:
         this_role = get(msg.guild.roles, id=int(696682433516535841))
         await user.add_roles(this_role)
 
         print("Cargo adicionado - Python: ", user)
 
     # Ruby
-    if reaction.emoji == "💎" and msg.id == msg_id:
+    if reaction.emoji == "💎" and msg.id == msg_id1:
         this_role = get(msg.guild.roles, id=int(697235035639513138))
         await user.add_roles(this_role)
 
@@ -192,50 +191,44 @@ async def on_reaction_remove(reaction, user):
         print("Usuário des-verificado: ", user)
 
     # Front-end
-    if reaction.emoji == "💻" and msg.id == msg_id:
+    if reaction.emoji == "💻" and msg.id == msg_id1:
         this_role = get(msg.guild.roles, id=int(696682138162036738))
-        await
-        user.remove_roles(this_role)
+        await user.remove_roles(this_role)
 
         print("Cargo removido - Front-end: ", user)
 
     # Back-end
-    if reaction.emoji == "🔌" and msg.id == msg_id:
+    if reaction.emoji == "🔌" and msg.id == msg_id1:
         this_role = get(msg.guild.roles, id=int(696682158181318706))
-        await
-        user.remove_roles(this_role)
+        await user.remove_roles(this_role)
 
         print("Cargo removido - Front-end: ", user)
 
     # PHP
-    if reaction.emoji == "🐘" and msg.id == msg_id:
-        this_role = get(msg.guild.roles, id=int(696682433516535841))
-        await
-        user.remove_roles(this_role)
+    if reaction.emoji == "🐘" and msg.id == msg_id1:
+        this_role = get(msg.guild.roles, id=int(696682804510982184))
+        await user.remove_roles(this_role)
 
         print("Cargo removido - PHP: ", user)
 
     # Java
-    if reaction.emoji == "☕" and msg.id == msg_id:
+    if reaction.emoji == "☕" and msg.id == msg_id1:
         this_role = get(msg.guild.roles, id=int(696682461404594206))
-        await
-        user.remove_roles(this_role)
+        await user.remove_roles(this_role)
 
         print("Cargo removido - Java: ", user)
 
     # Python
-    if reaction.emoji == "🐍" and msg.id == msg_id:
+    if reaction.emoji == "🐍" and msg.id == msg_id1:
         this_role = get(msg.guild.roles, id=int(696682433516535841))
-        await
-        user.remove_roles(this_role)
+        await user.remove_roles(this_role)
 
         print("Cargo removido - Python: ", user)
 
     # Ruby
-    if reaction.emoji == "💎" and msg.id == msg_id:
+    if reaction.emoji == "💎" and msg.id == msg_id1:
         this_role = get(msg.guild.roles, id=int(697235035639513138))
-        await
-        user.remove_roles(this_role)
+        await user.remove_roles(this_role)
 
         print("Cargo removido - Ruby: ", user)
 
